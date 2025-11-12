@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSSports Training Program | Enquire</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      text-align: center;
+      background-color: #002244;
+      color: white;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      width: 80%;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #002244;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #004488;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="images/CSLogo.jpeg" alt="CS Sports Logo" style="width: 150px; height: 150px; display: block; margin: 0 auto;">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Our Services</a>
+      <a href="enquiry.html">Enquire</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Enquire About Our Services</h1>
+    <form id="enquiryForm" novalidate>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      <span class="error" id="nameError"></span>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+      <span class="error" id="emailError"></span>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. 0821234567" required pattern="^0[0-9]{9}$">
+      <span class="error" id="phoneError"></span>
+
+      <label for="service">Select a Service:</label>
+      <select id="service" name="service" required>
+        <option value="">-- Choose a Service --</option>
+        <option value="fitness">Fitness Coaching</option>
+        <option value="nutrition">Nutrition Plan</option>
+        <option value="teamTraining">Team Training</option>
+        <option value="personalTraining">Personal Training</option>
+      </select>
+      <span class="error" id="serviceError"></span>
+
+      <label>Preferred Contact Method:</label>
+      <label><input type="radio" name="contactMethod" value="email" required> Email</label>
+      <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
+      <span class="error" id="contactError"></span>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" placeholder="Write your enquiry here..." required></textarea>
+      <span class="error" id="messageError"></span>
+
+      <button type="submit">Submit Enquiry</button>
+      <p class="success" id="successMessage"></p>
+    </form>
+  </main>
+
+  <footer>
+    <p>CS Sports Training Program © 2025</p>
+  </footer>
+
+  <script>
+    document.getElementById("enquiryForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      // Clear old errors
+      document.querySelectorAll(".error").forEach(e => e.textContent = "");
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value;
+      const message = document.getElementById("message").value.trim();
+      const contact = document.querySelector('input[name="contactMethod"]:checked');
+
+      if (name.length < 3) {
+        valid = false;
+        document.getElementById("nameError").textContent = "Please enter a valid full name.";
+      }
+
+      if (!email.includes("@")) {
+        valid = false;
+        document.getElementById("emailError").textContent = "Please enter a valid email address.";
+      }
+
+      const phonePattern = /^0[0-9]{9}$/;
+      if (!phonePattern.test(phone)) {
+        valid = false;
+        document.getElementById("phoneError").textContent = "Enter a valid 10-digit South African phone number.";
+      }
+
+      if (service === "") {
+        valid = false;
+        document.getElementById("serviceError").textContent = "Please select a service.";
+      }
+
+      if (!contact) {
+        valid = false;
+        document.getElementById("contactError").textContent = "Please select a preferred contact method.";
+      }
+
+      if (message.length < 10) {
+        valid = false;
+        document.getElementById("messageError").textContent = "Message should be at least 10 characters.";
+      }
+
+      if (valid) {
+        document.getElementById("successMessage").textContent = "Thank you! Your enquiry has been submitted successfully.";
+        document.getElementById("enquiryForm").reset();
+      }
+    });
+  </script>
+</body>
+</html>

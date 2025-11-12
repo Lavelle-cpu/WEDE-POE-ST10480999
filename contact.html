@@ -1,0 +1,293 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Sports Training Program | Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            background-color: #002244;
+            color: white;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .contact-page {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        input:valid, textarea:valid {
+            border-color: green;
+        }
+        input:invalid, textarea:invalid {
+            border-color: red;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
+        .success-message {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Footer Styling (Copied from previous design) --- */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 40px 20px;
+            font-size: 16px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+            gap: 20px;
+        }
+
+        .footer-section h3, .footer-section h4 {
+            color: #28a745;
+        }
+
+        .footer-section p, .footer-section ul {
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 5px 0;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #28a745;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social {
+            font-size: 22px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social:hover {
+            transform: scale(1.3);
+            color: #28a745;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            color: #ccc;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="images/CSLogo.jpeg" alt="CS Sports Logo" style="width: 150px; height: 150px; display: block; margin: 0 auto;">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Our Services</a>
+            <a href="enquiry.html">Enquire</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you! Please fill in the form below and we’ll get back to you as soon as possible.</p>
+
+        <!-- ✅ Contact Form with Validation -->
+        <form id="contactForm" novalidate>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            <span class="error-message" id="nameError">Please enter your name.</span>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            <span class="error-message" id="emailError">Please enter a valid email address.</span>
+
+            <label for="subject">Subject:</label>
+            <select id="subject" name="subject" required>
+                <option value="">Select a subject</option>
+                <option value="training">Training Enquiry</option>
+                <option value="booking">Booking</option>
+                <option value="general">General Enquiry</option>
+            </select>
+            <span class="error-message" id="subjectError">Please select a subject.</span>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+            <span class="error-message" id="messageError">Please enter your message.</span>
+
+            <button type="submit">Send Message</button>
+            <p class="success-message" id="successMessage"></p>
+        </form>
+
+        <h2>Our Location</h2> 
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.6911836353584!2d18.6045461!3d-33.92334679999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5a9090d7ee61%3A0x6860850b19739840!2sFlorida%20Park!5e0!3m2!1sen!2sza!4v1756128592530!5m2!1sen!2sza" width="100%" height="450" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </main>
+
+    <!-- ✅ Professional Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>CS Sports Training Program</h3>
+                <p>Empowering individuals through expert-guided fitness and wellness programs since 2019.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="enquiry.html">Enquire</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: <a href="mailto:info@cssports.co.za">info@cssports.co.za</a></p>
+                <p>Phone: +27 81 234 5678</p>
+                <div class="social-icons">
+                    <a href="#" class="social fb"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social ig"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-bottom">© 2025 CS Sports Training Program | All Rights Reserved</p>
+    </footer>
+
+    <!-- ✅ Form Validation Script -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let valid = true;
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const subject = document.getElementById("subject");
+            const message = document.getElementById("message");
+
+            // Reset messages
+            document.querySelectorAll(".error-message").forEach(el => el.style.display = "none");
+            document.getElementById("successMessage").textContent = "";
+
+            if (name.value.trim() === "") {
+                document.getElementById("nameError").style.display = "block";
+                valid = false;
+            }
+            if (!email.value.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
+                document.getElementById("emailError").style.display = "block";
+                valid = false;
+            }
+            if (subject.value === "") {
+                document.getElementById("subjectError").style.display = "block";
+                valid = false;
+            }
+            if (message.value.trim() === "") {
+                document.getElementById("messageError").style.display = "block";
+                valid = false;
+            }
+
+            if (valid) {
+                document.getElementById("successMessage").textContent = "✅ Thank you! Your message has been sent successfully.";
+                document.getElementById("contactForm").reset();
+            }
+        });
+    </script>
+</body>
+</html>

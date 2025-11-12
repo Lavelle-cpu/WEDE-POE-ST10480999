@@ -1,0 +1,272 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSSports Training Program | Our Services</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-container input[type="text"] {
+      width: 50%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .search-container button {
+      padding: 10px 15px;
+      background-color: #28a745;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background-color: #218838;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    ul, ol {
+      text-align: left;
+      display: inline-block;
+      margin: 10px auto;
+    }
+
+    .service-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .service-images img {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .service-images img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #222;
+      color: white;
+    }
+
+    /* Popup Modal */
+    .image-popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      position: relative;
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .popup-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: red;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .close-btn:hover {
+      color: #ff4d4d;
+    }
+
+    /* Hidden class for search filtering */
+    .hidden {
+      display: none !important;
+    }
+
+    #no-results {
+      display: none;
+      color: red;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="images/CSLogo.jpeg" alt="CS Sports Logo" style="width: 150px; height: 150px; display: block; margin: 0 auto;">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Our Services</a>
+      <a href="enquiry.html">Enquire</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <div class="search-container">
+      <input id="searchInput" type="text" placeholder="Search for training tips, programs, or coaches...">
+      <button id="searchButton">Search</button>
+    </div>
+  </header>
+
+  <main class="services-page">
+    <h1>Transform Your Life - Let's Begin Your Fitness Journey Together</h1>
+
+    <h2>Why Choose Our Personal Training?</h2>
+    <ul id="featuresList">
+      <li>Tailored workout programs designed specifically for your body and goals</li>
+      <li>One-on-one coaching and continuous motivation</li>
+      <li>Nutrition guidance to complement your training</li>
+      <li>Flexible scheduling to fit your busy lifestyle</li>
+      <li>Results-driven approach with regular progress tracking</li>
+    </ul>
+
+    <div class="service-images">
+      <img src="images/HLGuide21-22thumb-793x1024.jpg.avif" alt="Personal Training Session">
+      <img src="images/CR011AG_May-w-o-5-27-article-images_How-Long-Should-Personal-Training-Sessions-Last_article_6.7.24.jpg" alt="Nutrition Guidance">
+      <img src="images/5Free-Fitness-Assessment-Template-1024x640.jpg.webp" alt="Fitness Assessment">
+    </div>
+
+    <h2>What You'll Get in Your Free Consultation:</h2>
+    <ol id="consultationList">
+      <li>Comprehensive fitness assessment</li>
+      <li>Discussion of your goals and challenges</li>
+      <li>Personalized strategy session</li>
+      <li>Sample workout demonstration</li>
+      <li>No obligation - just expert advice</li>
+    </ol>
+
+    <p id="no-results">No results found. Please try another keyword.</p>
+  </main>
+
+  <!-- Image Popup Modal -->
+  <div id="popup" class="image-popup">
+    <div class="popup-content">
+      <span class="close-btn">&times;</span>
+      <img id="popup-img" src="" alt="Popup Image">
+    </div>
+  </div>
+
+  <footer>
+    <p>CS Sports Training Program © 2025</p>
+  </footer>
+
+  <script>
+    // Image popup functionality
+    const images = document.querySelectorAll('.service-images img');
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popup-img');
+    const closeBtn = document.querySelector('.close-btn');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        popup.style.display = 'flex';
+        popupImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const featuresList = document.querySelectorAll('#featuresList li');
+    const consultationList = document.querySelectorAll('#consultationList li');
+    const serviceImages = document.querySelectorAll('.service-images img');
+    const noResults = document.getElementById('no-results');
+
+    function searchContent() {
+      const query = searchInput.value.toLowerCase();
+      let found = false;
+
+      const allItems = [...featuresList, ...consultationList, ...serviceImages];
+
+      allItems.forEach(item => {
+        const text = item.alt ? item.alt.toLowerCase() : item.textContent.toLowerCase();
+        if (text.includes(query) || query === "") {
+          item.classList.remove('hidden');
+          found = true;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      noResults.style.display = found ? 'none' : 'block';
+    }
+
+    searchButton.addEventListener('click', searchContent);
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') searchContent();
+    });
+  </script>
+</body>
+</html>

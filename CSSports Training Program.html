@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content=" width=device-width, initial-scale=11.0">
+        <title> CSSports Training Program</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+
+
+    <body>
+        <header>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Our Services</a>
+                <a href="enquiry.html">Enquire</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+        </header>
+
+        <main class=" home-page">
+            
+            <!--This is the heading-->
+            <h1>Welcome to our Program</h1>
+            <h2>List of our services</h2>
+            <ul>
+                <li>Personal Training</li>
+                <li>Gym sessions</li>
+                <li>Field sessions</li>
+                <li>Dietry plan</li>
+            </ul>
+
+            <div class=" Content-Container">
+                <div class="Welcome-message">
+
+                    <p>Welcome to Ciaran's Personal Training Services, we would like to transform each ones lives for the better physically and mentally!</p>
+                </div>
+                <div class="company-logo">
+                    <img src="images/CSLogo.jpeg" alt="Ciaran" style="width: 480px; height: 480px;">
+                </div>
+
+            </div>
+
+
+
+        </main>
+
+        <footer>
+            <p>Ciaran Smith Personal Training @2025</p>
+        </footer>
+    <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+
+
+
+</html>
